@@ -1,3 +1,4 @@
+import { getAllArticles } from './api/blogApi';
 import ArticleList from './components/Organisms/ArticleList';
 
 const Home = async () => {
@@ -5,10 +6,13 @@ const Home = async () => {
   // const res = await fetch(`${API_URL}/api}`, { cache: 'no-store' });
   // const articles = await res.json();
 
+  // 全記事取得のAPIを叩き、変数articlesに格納 -> propsとしてArticleListに流す
+  const articles = await getAllArticles();
+
   return (
     <div className='md:flex'>
       <section className='w-full md:w-2/3 flex flex-col items-center px-3'>
-        <ArticleList />
+        <ArticleList articles={articles} />
         <div className='flex items-center py-8'>
           <a
             href='#'

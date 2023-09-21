@@ -1,3 +1,5 @@
+import Footer from './components/Molecules/Footer';
+import Header from './components/Molecules/Header';
 import './styles/globals.css';
 import type { Metadata } from 'next';
 
@@ -41,10 +43,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='ja'>
-      <body>
-        <header>HEADER</header>
+      <body className='container mx-auto bg-slate-700 text-slate-50'>
+        <Header />
         {children}
-        <footer>FOOTER</footer>
+        <Footer />
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 import { ArticleProps } from '../types/types';
-import {notFound} from 'next/navigation'
- 
+import { notFound } from 'next/navigation';
+
 // ➀ 全記事取得のAPI
 export const getAllArticles = async (): Promise<ArticleProps[]> => {
   // SSR -> cache: no-store
@@ -27,7 +27,7 @@ export const getEachArticle = async (id: string): Promise<ArticleProps> => {
 
   // 404ページ遷移
   if (res.status === 404) {
-    notFound()
+    notFound();
   }
 
   if (!res.ok) {
@@ -38,4 +38,34 @@ export const getEachArticle = async (id: string): Promise<ArticleProps> => {
 
   const article = res.json();
   return article;
+};
+
+// ➂ ブログ投稿用のAPI
+// 新しいブログ記事を作成し、サーバーに送信する為の記述
+export const createArticle = async (
+  id: string,
+  title: string,
+  content: string,
+): Promise<ArticleProps> => {
+  const currentDateTime = new Date().toISOString();
+
+  // fetch(url, options)
+  // url: 通信を行う対象のURL, 
+  // options: HTTPメソッド、header, req body..をオブジェクト形式で記載
+  const res = await fetch('http://localhost:3001/posts/', {
+    method: 'POST',
+    // JSON形式データの送信を示すcontent-typeをheadersに指定
+    headers: { 'Content-Type': 'application/json' },
+    // 新しいブログ記事の情報をJSON形式の文字列に変換し、POST reqと送信
+    body: JSON.stringify({ id, title, content, createdAt: currentDateTime }),
+  });
+
+  if (!res.ok) {
+    throw new Error('エラーが発生しました');
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const newArticle = await res.json();
+  return newArticle;
 };

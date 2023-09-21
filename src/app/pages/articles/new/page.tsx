@@ -1,9 +1,11 @@
 'use client';
 
 import { createArticle } from '@/app/api/blogApi';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const CreateBlogPage = () => {
+  const router = useRouter()
   const [id, setId] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
@@ -13,6 +15,9 @@ const CreateBlogPage = () => {
 
     // 引数: ユーザーが入力した内容 = onChange/更新関数で更新された状態変数
     await createArticle(id, title, content);
+
+    router.push("/");
+    router.refresh();
   };
 
   return (

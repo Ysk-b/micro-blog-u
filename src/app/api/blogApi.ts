@@ -1,5 +1,4 @@
 // 全記事取得のAPI
-
 import { ArticleProps } from '../types/types';
 
 // API作成
@@ -9,6 +8,11 @@ export const getAllArticles = async (): Promise<ArticleProps[]> => {
   // SSG -> cache: force-cache(default setting)
   // ISR -> next: {revalidate: 10} revalidate: duration
   const res = await fetch('http://localhost:3001/posts', { cache: 'no-store' });
+
+  if (!res.ok) {
+    throw new Error('エラーが発生しました');
+  }
+
   const articles = await res.json();
 
   return articles;

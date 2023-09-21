@@ -1,10 +1,11 @@
-  
+import ArticleList from './components/Organisms/ArticleList';
 
 const Home = () => {
   return (
     <div className='md:flex'>
       <section className='w-full md:w-2/3 flex flex-col items-center px-3'>
-        <ArticleList/>
+        <ArticleList />
+        {/* pagination */}
         <div className='flex items-center py-8'>
           <a
             href='#'
@@ -55,6 +56,6 @@ const Home = () => {
       </aside>
     </div>
   );
-}
+};
 
-export default Home
+export default Home;

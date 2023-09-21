@@ -1,11 +1,14 @@
 import ArticleList from './components/Organisms/ArticleList';
 
-const Home = () => {
+const Home = async () => {
+  // const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  // const res = await fetch(`${API_URL}/api}`, { cache: 'no-store' });
+  // const articles = await res.json();
+
   return (
     <div className='md:flex'>
       <section className='w-full md:w-2/3 flex flex-col items-center px-3'>
         <ArticleList />
-        {/* pagination */}
         <div className='flex items-center py-8'>
           <a
             href='#'

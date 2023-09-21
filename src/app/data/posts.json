@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "id": "test_1",
+      "title": "test_title_react",
+      "content": "test_content_react",
+      "createdAt": "2023-09-21"
+    },
+    {
+      "id": "test_2",
+      "title": "test_title_next",
+      "content": "test_content_next",
+      "createdAt": "2023-09-21"
+    },
+    {
+      "id": "test_3",
+      "title": "test_title_php",
+      "content": "test_content_php",
+      "createdAt": "2023-09-21"
+    }
+  ]
+}

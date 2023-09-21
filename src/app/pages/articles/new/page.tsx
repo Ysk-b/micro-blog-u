@@ -1,22 +1,26 @@
 'use client';
 
 import { createArticle } from '@/app/api/blogApi';
+import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const CreateBlogPage = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [id, setId] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
 
     // 引数: ユーザーが入力した内容 = onChange/更新関数で更新された状態変数
     await createArticle(id, title, content);
+    setLoading(false);
 
-    router.push("/");
+    router.push('/');
     router.refresh();
   };
 
@@ -53,12 +57,15 @@ const CreateBlogPage = () => {
 
         <button
           type='submit'
-          // className=
-          // {`py-2 px-4 border rounded-md
-          // ${
-          //   loading ? 'bg-orange-300 cursor-not-allowed' : 'bg-orange-400 hover:bg-orange-500'
-          //   } text-white font-semibold focus:outline-none`
-          // }
+          className={classNames(
+            'py-2 px-4 border rounded-md text-white font-semibold focus:outline-none',
+            {
+              'bg-orange-300 cursor-not-allowed': loading,
+              'bg-orange-400 hover:bg-orange-500': !loading,
+            },
+          )}
+          // loading時ボタンを無効化
+          disabled={loading}
         >
           作成
         </button>

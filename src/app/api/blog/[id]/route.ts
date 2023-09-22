@@ -15,3 +15,12 @@ export const GET = async (req: Request, res: Response) => {
 
   return NextResponse.json(data);
 };
+
+export const DELETE = async (req: Request, res: Response) => {
+  const id = req.url?.split('/api/')[1];
+
+  const { error } = await supabase.from('posts').delete().eq('id', id);
+  if (error) return NextResponse.json(error);
+
+  return NextResponse.json({ message: 'Deleted successfully' });
+};

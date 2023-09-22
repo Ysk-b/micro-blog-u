@@ -2,12 +2,9 @@ import ArticleList from './components/Organisms/ArticleList';
 
 const Home = async () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+  // 全記事取得API
   const res = await fetch(`${API_URL}/api`, { cache: 'no-store' }); // SSR
-
-  if (!res.ok) {
-    throw new Error('API リクエストが失敗しました');
-  }
-
   const articles = await res.json();
 
   // 全記事取得のAPIを叩き、変数articlesに格納 -> propsとしてArticleListに流す

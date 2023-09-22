@@ -50,7 +50,7 @@ export const createArticle = async (
   const currentDateTime = new Date().toISOString();
 
   // fetch(url, options)
-  // url: 通信を行う対象のURL, 
+  // url: 通信を行う対象のURL,
   // options: HTTPメソッド、header, req body..をオブジェクト形式で記載
   const res = await fetch('http://localhost:3001/posts/', {
     method: 'POST',
@@ -68,4 +68,24 @@ export const createArticle = async (
 
   const newArticle = await res.json();
   return newArticle;
+};
+
+// ➃ ブログ削除用のAPI
+// 生成済みのブログ記事を削除
+export const deleteArticle = async (id: string): Promise<ArticleProps> => {
+  // fetch(url, options)
+  // url: 通信を行う対象のURL,
+  // options: HTTPメソッド、header, req body..をオブジェクト形式で記載
+  const res = await fetch(`http://localhost:3001/posts/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!res.ok) {
+    throw new Error('エラーが発生しました');
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const deleteArticle = await res.json();
+  return deleteArticle;
 };

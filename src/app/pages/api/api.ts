@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase } from '../utils/supabaseClient';
+import { supabase } from '../../utils/supabaseClient';
 
 // supaBaseに存在する全記事を取得
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

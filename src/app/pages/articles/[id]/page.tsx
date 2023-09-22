@@ -3,8 +3,18 @@ import DeleteButton from '@/app/components/Atom/DeleteButton';
 import Image from 'next/image';
 
 const Article = async ({ params }: { params: { id: string } }) => {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+  // 各記事取得APIを叩く
+  const res = await fetch(`${API_URL}/api/${params.id}`, {
+    next: {
+      revalidate: 10,
+    },
+  }); // ISR
+  const eachArticle = await res.json();
+
   // 引数として渡すparams.idでAPIコール
-  const eachArticle = await getEachArticle(params.id);
+  // const eachArticle = await getEachArticle(params.id);
 
   return (
     <div className='max-w-3xl mx-auto p-5'>

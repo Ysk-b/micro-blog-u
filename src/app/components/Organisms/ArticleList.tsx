@@ -1,4 +1,4 @@
-import { ArticleProps } from '@/app/types/types';
+import { ArticleProps } from '@/types/types';
 import ArticleCard from './ArticleCard';
 
 interface ArticleListProps {

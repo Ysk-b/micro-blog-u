@@ -1,4 +1,4 @@
-import { ArticleProps } from '@/app/types/types';
+import { ArticleProps } from '@/types/types';
 import Image from 'next/image';
 
 interface ArticleCardProps {
@@ -31,7 +31,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           <a href={`articles/${article.id}`} className='font-semibold hover:text-gray-800'>
             David Grzyb
           </a>
-          Published on {article.createdAt}
+          Published on {new Date(article.createdAt).toLocaleString()}
         </p>
         <a href={`articles/${article.id}`} className='pb-6'>
           {article.content.length > 70 ? article.content.substring(0, 70) + '...' : article.content}

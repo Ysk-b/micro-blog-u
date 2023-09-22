@@ -16,8 +16,21 @@ const CreateBlogPage = () => {
     e.preventDefault();
     setLoading(true);
 
+    // 新規投稿API
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    await fetch(`${API_URL}/api/create`, {
+      method: 'POST',
+      // JSON形式のデータ送信を明示
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // create.tsで定義したid, title, contnetを、JSON形式に変換してreqのbodyに設定
+      // APIサーバーがreqを処理することで、新規投稿が作成される
+      body: JSON.stringify({ id, title, content }),
+    });
+
     // 引数: ユーザーが入力した内容 = onChange/更新関数で更新された状態変数
-    await createArticle(id, title, content);
+    // await createArticle(id, title, content);
     setLoading(false);
 
     router.push('/');

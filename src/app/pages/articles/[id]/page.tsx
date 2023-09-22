@@ -5,7 +5,7 @@ import Image from 'next/image';
 const Article = async ({ params }: { params: { id: string } }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  // 各記事取得API
+  // 各記事取得APIを叩く
   const res = await fetch(`${API_URL}/api/${params.id}`, {
     next: {
       revalidate: 10,

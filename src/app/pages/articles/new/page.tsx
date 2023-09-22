@@ -16,7 +16,7 @@ const CreateBlogPage = () => {
     e.preventDefault();
     setLoading(true);
 
-    // 新規投稿API
+    // 新規投稿APIを叩く
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
     await fetch(`${API_URL}/api/create`, {
       method: 'POST',

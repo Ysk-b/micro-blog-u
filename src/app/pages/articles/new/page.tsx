@@ -1,6 +1,6 @@
 'use client';
 
-import { createArticle } from '@/app/api/blogApi';
+import { createArticle } from '@/app/api/api_json';
 import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';

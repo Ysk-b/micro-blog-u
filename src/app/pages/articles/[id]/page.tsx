@@ -1,4 +1,4 @@
-import { deleteArticle, getEachArticle } from '@/app/api/blogApi';
+import { deleteArticle, getEachArticle } from '@/app/api/api_json';
 import DeleteButton from '@/app/components/Atom/DeleteButton';
 import Image from 'next/image';
 

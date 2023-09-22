@@ -4,7 +4,7 @@ const Home = async () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   // 全記事取得API
-  const res = await fetch(`${API_URL}/api`, { cache: 'no-store' }); // SSR
+  const res = await fetch(`${API_URL}/api/blog`, { cache: 'no-store' }); // SSR
   const articles = await res.json();
 
   // 全記事取得のAPIを叩き、変数articlesに格納 -> propsとしてArticleListに流す

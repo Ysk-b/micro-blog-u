@@ -1,6 +1,6 @@
 'use client';
 
-import { deleteArticle } from '@/app/api/blogApi';
+import { deleteArticle } from '@/app/api/api_json';
 import { useRouter } from 'next/navigation';
 
 interface DeleteButtonProps {

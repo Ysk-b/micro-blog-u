@@ -1,4 +1,4 @@
-import { ArticleProps } from '../types/types';
+import { ArticleProps } from '../../types/types';
 import { notFound } from 'next/navigation';
 
 // ➀ 全記事取得のAPI

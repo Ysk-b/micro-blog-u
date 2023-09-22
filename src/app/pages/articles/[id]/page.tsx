@@ -1,8 +1,8 @@
-import { getEachArticle } from '@/app/api/blogApi';
+import { deleteArticle, getEachArticle } from '@/app/api/blogApi';
+import DeleteButton from '@/app/components/Atom/DeleteButton';
 import Image from 'next/image';
 
 const Article = async ({ params }: { params: { id: string } }) => {
-
   // 引数として渡すparams.idでAPIコール
   const eachArticle = await getEachArticle(params.id);
 
@@ -18,7 +18,10 @@ const Article = async ({ params }: { params: { id: string } }) => {
       <div className='text-lg leading-relaxed text-justify'>
         <p>{eachArticle.content}</p>
       </div>
-      <div className='text-right mt-3'></div>
+      <div className='text-right mt-3'>
+        {/* 削除用の関数はCSRである必要 → 外部コンポ―ネントとして切り出して処理 */}
+        <DeleteButton id={eachArticle.id} />
+      </div>
     </div>
   );
 };

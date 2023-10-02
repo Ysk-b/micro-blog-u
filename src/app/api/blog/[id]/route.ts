@@ -18,10 +18,10 @@ export const GET = async (req: Request, res: Response) => {
 
 // 削除用API
 export const DELETE = async (req: Request, res: Response) => {
-  const id = req.url?.split('/api/')[1];
+  const id = req.url?.split('/blog/')[1];
 
-  const { error } = await supabase.from('posts').delete().eq('id', id);
-  if (error) return NextResponse.json(error);
+  const { error: deleteError } = await supabase.from('posts').delete().eq('id', id);
+  if (deleteError) return NextResponse.json(deleteError);
 
-  return NextResponse.json({ message: 'Deleted successfully' });
+  return NextResponse.json({status: 200});
 };

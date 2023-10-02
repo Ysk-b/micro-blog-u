@@ -1,6 +1,5 @@
 'use client';
 
-import { deleteArticle } from '@/app/api/api_json';
 import { useRouter } from 'next/navigation';
 
 interface DeleteButtonProps {
@@ -9,9 +8,8 @@ interface DeleteButtonProps {
 
 const DeleteButton = ({ id }: DeleteButtonProps) => {
   const router = useRouter();
-  const handleDelete = async () => {
-    // await deleteArticle(id);
 
+  const handleDelete = async () => {
     // 投稿削除用APIを叩く
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
     await fetch(`${API_URL}/api/blog/${id}`, {

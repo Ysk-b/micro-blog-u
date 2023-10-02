@@ -12,7 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const { data, error } = await supabase.from('posts').select('*').eq('id', id).single();
 
       if (error) {
-        return res.status(500).json({ error: error.message });
+        return res.status(404).json({ error: error.message });
       }
       if (!data) {
         notFound();

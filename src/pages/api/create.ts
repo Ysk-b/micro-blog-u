@@ -9,6 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { data, error } = await supabase
     .from('posts')
+    // insertで、postsに挿入するデータを指定
     .insert([{ id, title, content, createAt: new Date().toISOString() }]);
 
   if (error) {

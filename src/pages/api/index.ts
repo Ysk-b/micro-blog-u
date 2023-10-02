@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '../../utils/supabaseClient';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-// supaBaseに存在する全記事を取得
+// 全記事取得用API
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // supaBase query実行: 'posts'テーブルから'全て'を選択し、data変数に格納
   const { data, error } = await supabase.from('posts').select('*');

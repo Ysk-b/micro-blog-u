@@ -1,6 +1,6 @@
 'use client';
 
-import { createArticle } from '@/app/api/blogApi';
+import { createArticle } from '@/app/api/api_json';
 import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -18,7 +18,7 @@ const CreateBlogPage = () => {
 
     // 新規投稿APIを叩く
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
-    await fetch(`${API_URL}/api/create`, {
+    await fetch(`${API_URL}/api/blog`, {
       method: 'POST',
       // JSON形式のデータ送信を明示
       headers: {

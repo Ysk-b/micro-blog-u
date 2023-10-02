@@ -16,6 +16,7 @@ export const GET = async (req: Request, res: Response) => {
   return NextResponse.json(data);
 };
 
+// 削除用API
 export const DELETE = async (req: Request, res: Response) => {
   const id = req.url?.split('/api/')[1];
 

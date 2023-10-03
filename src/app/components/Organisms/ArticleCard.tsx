@@ -39,10 +39,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         <a href={`articles/${article.id}`} className='pb-6'>
           {article.content.length > 70 ? article.content.substring(0, 70) + '...' : article.content}
         </a>
-        <a
-          href={`pages/articles/${article.id}`}
-          className='uppercase text-gray-800 hover:text-black'
-        >
+        <a href={`pages/articles/${article.id}`} className='uppercase text-gray-800 hover:text-black'>
           Continue Reading <i className='fas fa-arrow-right'></i>
         </a>
       </div>

@@ -17,6 +17,7 @@ const CreateBlogPage = () => {
     setLoading(true);
 
     // 新規投稿APIを叩く
+    // 通常、POSTメソッドを使用する場合、reqにheaders, body等、POSTする内容の情報付加が必要
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
     await fetch(`${API_URL}/api/blog`, {
       method: 'POST',
